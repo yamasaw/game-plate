@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./components/Layout";
-import GamePage from "./pages/GamePage";
-import ForgePage from "./pages/ForgePage";
-import ExplorePage from "./pages/ExplorePage";
-import ShopPage from "./pages/ShopPage";
-import SettingsPage from "./pages/SettingsPage";
+import Layout from "@/components/Layout";
+import GamePage from "@/pages/GamePage";
+import ForgePage from "@/pages/ForgePage";
+import ExplorePage from "@/pages/ExplorePage";
+import ShopPage from "@/pages/ShopPage";
+import SettingsPage from "@/pages/SettingsPage";
 
 export default function App() {
   return (

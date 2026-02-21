@@ -1,4 +1,4 @@
-import DummyPage from "../components/DummyPage";
+import DummyPage from "@/components/DummyPage";
 
 export default function ForgePage() {
   return (
