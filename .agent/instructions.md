@@ -10,7 +10,13 @@
   - CSS Modules ではなくユーティリティクラスを優先する。
   - 共通カラーや変数は `src/index.css` の `@theme` ブロックで管理する。
 
-## 📱 モバイル最適化
+## � コーディング規約
+
+- **インデント**: スペース2文字。
+- **TypeScript**: `strict: true` に加え、`noImplicitReturns: true` 等の厳格なチェックを有効化する。
+- **Formatter**: `oxfmt` を使用（VS Code 上では保存時に自動実行）。
+
+## �📱 モバイル最適化
 
 - **Viewport**: 画面の高さには `100dvh` を使用し、モバイルブラウザのアドレスバーによる崩れを防止する。
 - **Safe Area**: ボトムナビゲーションなどは `pb-[--safe-bottom]` （`env(safe-area-inset-bottom)`）を考慮する。
@@ -31,4 +37,5 @@
 
 - 作業が完了した際、または大きな区切りでコミットを行う。
 - 直前の微修正などは `commit --amend` を検討する。
+- **Git Hooks**: `husky` + `lint-staged` を導入済み。コミット時に自動で `oxlint` と `oxfmt` が走る。
 - **Git Push 制限**: ユーザーからの**明示的な指示（「プッシュしてください」等）があるまで、絶対に `git push` を実行しない**。
