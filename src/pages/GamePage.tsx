@@ -1,6 +1,5 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import styles from './GamePage.module.css'
 
 function DummyScene() {
     return (
@@ -18,12 +17,14 @@ function DummyScene() {
 
 export default function GamePage() {
     return (
-        <div className={styles.page}>
+        <div className="w-full h-full relative bg-[#0a0b10]">
             <Canvas camera={{ position: [0, 0, 4], fov: 60 }}>
                 <DummyScene />
             </Canvas>
-            <div className={styles.hud}>
-                <span className={styles.badge}>FLOOR 1</span>
+            <div className="absolute top-4 right-4 pointer-events-none">
+                <span className="bg-primary/85 text-white text-[12px] font-bold tracking-widest px-[10px] py-1 rounded-[20px] backdrop-blur-[4px]">
+                    FLOOR 1
+                </span>
             </div>
         </div>
     )

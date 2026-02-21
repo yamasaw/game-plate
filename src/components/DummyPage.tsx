@@ -1,5 +1,3 @@
-import styles from './DummyPage.module.css'
-
 interface Props {
     title: string
     icon: string
@@ -8,10 +6,12 @@ interface Props {
 
 export default function DummyPage({ title, icon, description }: Props) {
     return (
-        <div className={styles.page}>
-            <span className={styles.icon}>{icon}</span>
-            <h1 className={styles.title}>{title}</h1>
-            <p className={styles.description}>{description}</p>
+        <div className="flex flex-col items-center justify-center h-full gap-3 p-6 text-center">
+            <span className="text-[64px] leading-none">{icon}</span>
+            <h1 className="text-2xl font-bold text-text">{title}</h1>
+            <p className="text-sm text-text-muted max-w-[240px] leading-relaxed">
+                {description}
+            </p>
         </div>
     )
 }
