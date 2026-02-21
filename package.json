@@ -1,9 +1,8 @@
 {
   "name": "game-plate",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.13.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -34,5 +33,6 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1"
-  }
+  },
+  "packageManager": "pnpm@10.13.1"
 }

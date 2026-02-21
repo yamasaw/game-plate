@@ -7,6 +7,7 @@
 このプロジェクトは、モバイル環境に最適化された軽量でパフォーマンスの高いゲーム基盤を提供します。Three.js との親和性を考慮し、SSR によるトラブルを避けるため Next.js ではなく純粋な Vite 環境を採用しています。
 
 ### 主な特徴
+
 - **3D 対応**: `@react-three/fiber` および `@react-three/drei` を統合済み。
 - **モバイルファースト**: `100dvh` と `safe-area` パディングにより、モバイルブラウザのフルスクリーン表示に対応。
 - **Tailwind CSS v4**: 最新エンジンによる高速なスタイリングと、ゲーム向けにカスタマイズされたテーマ（カラーパレット）。
@@ -15,14 +16,14 @@
 
 ## 🛠 技術スタック
 
-| 技術 | 役割 |
-| --- | --- |
-| [Vite](https://vitejs.dev/) | ビルドツール & 開発サーバー |
-| [React](https://reactjs.org/) | UI ライブラリ |
-| [Three.js](https://threejs.org/) | 3D エンジン |
-| [R3F](https://r3f.docs.pmnd.rs/) | Three.js の React ブリッジ |
+| 技術                                        | 役割                            |
+| ------------------------------------------- | ------------------------------- |
+| [Vite](https://vitejs.dev/)                 | ビルドツール & 開発サーバー     |
+| [React](https://reactjs.org/)               | UI ライブラリ                   |
+| [Three.js](https://threejs.org/)            | 3D エンジン                     |
+| [R3F](https://r3f.docs.pmnd.rs/)            | Three.js の React ブリッジ      |
 | [Tailwind CSS v4](https://tailwindcss.com/) | スタイリング & デザインシステム |
-| [pnpm](https://pnpm.io/) | パッケージマネージャー |
+| [pnpm](https://pnpm.io/)                    | パッケージマネージャー          |
 
 ## 📁 ディレクトリ構造
 
@@ -48,9 +49,11 @@ public/
 ## ⌨️ 開発方法
 
 ### 事前準備
+
 - [pnpm](https://pnpm.io/installation) がインストールされていること。
 
 ### セットアップ
+
 ```bash
 # 依存関係のインストール
 pnpm install
@@ -63,5 +66,6 @@ pnpm build
 ```
 
 ## 📜 設計ノート
+
 - **テーマ**: `src/index.css` の `@theme` ブロックで、カスタムカラー（`primary`, `surface`, `border` 等）を定義しています。
 - **ビューポート**: `h-[100dvh]` を使用することで、iOS/Android のアドレスバーの表示切り替えに伴うレイアウト崩れを防いでいます。
