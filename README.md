@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# Game Plate 🎮
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Vite**、**React**、**Three.js (R3F)** を使用した、プレミアムなスマートフォン向け WebGL ゲーム開発用ボイラープレートです。
 
-Currently, two official plugins are available:
+## 🚀 概要
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+このプロジェクトは、モバイル環境に最適化された軽量でパフォーマンスの高いゲーム基盤を提供します。Three.js との親和性を考慮し、SSR によるトラブルを避けるため Next.js ではなく純粋な Vite 環境を採用しています。
 
-## React Compiler
+### 主な特徴
+- **3D 対応**: `@react-three/fiber` および `@react-three/drei` を統合済み。
+- **モバイルファースト**: `100dvh` と `safe-area` パディングにより、モバイルブラウザのフルスクリーン表示に対応。
+- **Tailwind CSS v4**: 最新エンジンによる高速なスタイリングと、ゲーム向けにカスタマイズされたテーマ（カラーパレット）。
+- **アイコンシステム**: `public/icons/*.svg` を CSS mask を介して利用。Tailwind のクラス (`text-primary` 等) での自由な色変更と、独立したアセット管理を両立。
+- **スムーズな画面遷移**: `react-router-dom` をベースに、プレミアムな手触りのアニメーション付きタブバーを実装。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 技術スタック
 
-## Expanding the ESLint configuration
+| 技術 | 役割 |
+| --- | --- |
+| [Vite](https://vitejs.dev/) | ビルドツール & 開発サーバー |
+| [React](https://reactjs.org/) | UI ライブラリ |
+| [Three.js](https://threejs.org/) | 3D エンジン |
+| [R3F](https://r3f.docs.pmnd.rs/) | Three.js の React ブリッジ |
+| [Tailwind CSS v4](https://tailwindcss.com/) | スタイリング & デザインシステム |
+| [pnpm](https://pnpm.io/) | パッケージマネージャー |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📁 ディレクトリ構造
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+src/
+├── components/     # UIコンポーネント (BottomNav, Layout等)
+├── pages/          # 画面コンポーネント (GamePage, ForgePage等)
+├── assets/         # バンドル対象の静的資産
+└── index.css       # グローバルスタイル & Tailwind テーマ定義
+public/
+└── icons/          # CSS mask から参照される独立した .svg ファイル
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ アイコン管理
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+アイコンは `public/icons/` に独立した `.svg` ファイルとして保存されています。
+`BottomNav.tsx` では CSS の `mask-image` を使用しており、以下のように Tailwind の色指定を SVG に反映させることが可能です：
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```tsx
+<div className="bg-primary" style={{ maskImage: "url(/icons/sword.svg)" }} />
 ```
+
+## ⌨️ 開発方法
+
+### 事前準備
+- [pnpm](https://pnpm.io/installation) がインストールされていること。
+
+### セットアップ
+```bash
+# 依存関係のインストール
+pnpm install
+
+# 開発サーバーの起動
+pnpm dev
+
+# 本番ビルド
+pnpm build
+```
+
+## 📜 設計ノート
+- **テーマ**: `src/index.css` の `@theme` ブロックで、カスタムカラー（`primary`, `surface`, `border` 等）を定義しています。
+- **ビューポート**: `h-[100dvh]` を使用することで、iOS/Android のアドレスバーの表示切り替えに伴うレイアウト崩れを防いでいます。
